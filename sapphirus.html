@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matheus Lisboa | Full-Stack Developer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom CSS */
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --dark: #1f2937;
+        --light: #f9fafb;
+        --gray: #6b7280;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Header/Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .logo {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+      }
+
+      .language-switcher {
+        display: flex;
+        align-items: center;
+        margin-left: 2rem;
+      }
+
+      .language-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 25px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        opacity: 0.3;
+        transition: opacity 0.3s ease;
+        margin-left: 0.5rem;
+      }
+
+      .language-btn:hover {
+        opacity: 1;
+      }
+
+      .language-btn.active {
+        opacity: 1;
+        border-radius: 18px;
+      }
+
+      .flag-icon {
+        font-size: 1.5rem;
+      }
+
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        z-index: 999;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-nav-link {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .mobile-nav-link:hover {
+        background-color: #f3f4f6;
+        color: var(--primary);
+      }
+
+      .mobile-language-switcher {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        border-top: 1px solid #f3f4f6;
+        margin-top: 0.75rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: var(--white);
+        position: relative;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.75rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+      }
+
+      .hero-text {
+        font-size: 1.25rem;
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.875rem 2rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: var(--white);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+      }
+
+      /* About Section */
+      .section-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+      }
+
+      .about-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .about-img-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 5px solid var(--primary);
+        object-fit: cover;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .about-content {
+        flex: 2;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        color: var(--gray);
+      }
+
+      /* Skills Section */
+      .skills-section {
+        background-color: #f3f4f6;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-icon i {
+        font-size: 2rem;
+      }
+
+      .skill-name {
+        font-weight: 500;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .project-card {
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-description {
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-tag {
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .tag-react {
+        background-color: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .tag-node {
+        background-color: #dcfce7;
+        color: #15803d;
+      }
+
+      .tag-mongo {
+        background-color: #f3e8ff;
+        color: #7e22ce;
+      }
+
+      .tag-socket {
+        background-color: #fee2e2;
+        color: #b91c1c;
+      }
+
+      .tag-firebase {
+        background-color: #fef3c7;
+        color: #92400e;
+      }
+
+      .tag-redux {
+        background-color: #e0e7ff;
+        color: #4338ca;
+      }
+
+      .tag-vue {
+        background-color: #d1fae5;
+        color: #065f46;
+      }
+
+      .tag-postgres {
+        background-color: #fce7f3;
+        color: #be185d;
+      }
+
+      .tag-next {
+        background-color: #e5e7eb;
+        color: #1f2937;
+      }
+
+      .tag-stripe {
+        background-color: #f3f4f6;
+        color: #4b5563;
+      }
+
+      .tag-tailwind {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+
+      .tag-d3 {
+        background-color: #ffedd5;
+        color: #c2410c;
+      }
+
+      .tag-graphql {
+        background-color: #fef3c7;
+        color: #92400e;
+      }
+
+      .tag-django {
+        background-color: #f3e8ff;
+        color: #7e22ce;
+      }
+
+      .tag-redis {
+        background-color: #fee2e2;
+        color: #b91c1c;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        flex: 1;
+        padding: 0.75rem;
+        text-align: center;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .link-demo {
+        background-color: var(--primary);
+        color: var(--white);
+      }
+
+      .link-demo:hover {
+        background-color: var(--primary-dark);
+      }
+
+      .link-github {
+        background-color: var(--dark);
+        color: var(--white);
+      }
+
+      .link-github:hover {
+        background-color: #111827;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        background-color: #f3f4f6;
+      }
+
+      .contact-container {
+        display: flex;
+        gap: 4rem;
+      }
+
+      .form-container {
+        flex: 2;
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .form-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--gray);
+      }
+
+      .form-input,
+      .form-textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .form-btn {
+        width: 100%;
+        background-color: var(--primary);
+        color: var(--white);
+        padding: 0.875rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .form-btn:hover {
+        background-color: var(--primary-dark);
+      }
+
+      .contact-info-container {
+        flex: 1;
+      }
+
+      .contact-info {
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;
+      }
+
+      .contact-info-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .info-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--primary);
+      }
+
+      .social-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 2rem 0 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        font-size: 1.5rem;
+        color: var(--gray);
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: var(--primary);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark);
+        color: var(--white);
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .back-to-top {
+        display: inline-block;
+        margin-top: 1rem;
+        color: #9ca3af;
+        transition: color 0.3s ease;
+      }
+
+      .back-to-top:hover {
+        color: var(--white);
+      }
+
+      /* Hidden language class */
+      .lang-hidden {
+        display: none;
+      }
+
+      .resume-card {
+        flex: 2;
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .resume-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .resume-icon {
+        font-size: 4rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+      }
+
+      .resume-info {
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      .resume-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .resume-text {
+        color: var(--gray);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .resume-formats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .resume-format-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        background-color: #f9fafb;
+        border-radius: 8px;
+        width: 45%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .resume-format-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .format-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .far.fa-file-pdf {
+        color: #dc2626;
+      }
+
+      .far.fa-file-word {
+        color: #2563eb;
+      }
+
+      .format-label {
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--white);
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        text-align: center;
+      }
+
+      .download-btn:hover {
+        background-color: var(--primary-dark);
+      }
+
+      .download-btn i {
+        margin-right: 0.5rem;
+      }
+
+      /* Responsive adjustments for resume card */
+      @media (max-width: 768px) {
+        .resume-formats {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .resume-format-item {
+          width: 100%;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .contact-container {
+          flex-direction: column;
+        }
+
+        .contact-info-container {
+          order: -1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 1.75rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.25rem;
+        }
+
+        .hero-text {
+          font-size: 1rem;
+        }
+
+        .about-img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="#hero" class="logo">ML</a>
+        <div style="display: flex; align-items: center">
+          <nav class="nav-links">
+            <a href="#about" class="nav-link lang-en">About</a>
+            <a href="#about" class="nav-link lang-pt lang-hidden">Sobre</a>
+            <a href="#skills" class="nav-link lang-en">Skills</a>
+            <a href="#skills" class="nav-link lang-pt lang-hidden"
+              >Habilidades</a
+            >
+            <a href="#projects" class="nav-link lang-en">Projects</a>
+            <a href="#projects" class="nav-link lang-pt lang-hidden"
+              >Projetos</a
+            >
+            <a href="#contact" class="nav-link lang-en">Contact</a>
+            <a href="#contact" class="nav-link lang-pt lang-hidden">Contato</a>
+          </nav>
+          <div class="language-switcher">
+            <button class="language-btn active" data-lang="en">
+              <h1 class="flag-icon">🇺🇸</h1>
+            </button>
+            <button class="language-btn" data-lang="pt">
+              <h1 class="flag-icon">🇧🇷</h1>
+            </button>
+          </div>
+          <button class="menu-btn" id="menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" class="mobile-nav-link lang-en">About</a>
+        <a href="#about" class="mobile-nav-link lang-pt lang-hidden">Sobre</a>
+        <a href="#skills" class="mobile-nav-link lang-en">Skills</a>
+        <a href="#skills" class="mobile-nav-link lang-pt lang-hidden"
+          >Habilidades</a
+        >
+        <a href="#projects" class="mobile-nav-link lang-en">Projects</a>
+        <a href="#projects" class="mobile-nav-link lang-pt lang-hidden"
+          >Projetos</a
+        >
+        <a href="#contact" class="mobile-nav-link lang-en">Contact</a>
+        <a href="#contact" class="mobile-nav-link lang-pt lang-hidden"
+          >Contato</a
+        >
+
+        <div class="mobile-language-switcher">
+          <button class="language-btn active" data-lang="en">
+            <h1 class="flag-icon">🇺🇸</h1>
+          </button>
+          <button class="language-btn" data-lang="pt">
+            <h1 class="flag-icon">🇧🇷</h1>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Matheus Lisboa</h1>
+        <h2 class="hero-subtitle lang-en">Business Intelligence Analyst</h2>
+        <h2 class="hero-subtitle lang-pt lang-hidden">
+          Analista de Business Intelligence
+        </h2>
+        <p class="hero-text lang-en">
+          Crafting elegant solutions to complex problems through clean,
+          efficient code.
+        </p>
+        <p class="hero-text lang-pt lang-hidden">
+          Criando soluções elegantes para problemas complexos através de código
+          limpo e eficiente.
+        </p>
+        <a href="#projects" class="btn btn-primary lang-en">View My Work</a>
+        <a href="#projects" class="btn btn-primary lang-pt lang-hidden"
+          >Ver Meus Projetos</a
+        >
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title lang-en">About Me</h2>
+        <h2 class="section-title lang-pt lang-hidden">Sobre Mim</h2>
+        <div class="about-container">
+          <div class="about-img-container">
+            <img
+              src="/api/placeholder/300/300"
+              alt="Matheus Lisboa"
+              class="about-img"
+            />
+          </div>
+          <div class="about-content">
+            <div class="lang-en">
+              <p class="about-text">
+                Hi there! I'm Matheus, a passionate bi analyst and developer
+                with over 2 years of experience building dashboards and modern
+                web applications. After graduating with a degree in Internet
+                Systems in 2024, I've worked as an intern at a renowned law firm
+                where I was able to learn and be hired for a junior analyst
+                position delivering robust and scalable solutions that solve
+                real-world problems.
+              </p>
+              <p class="about-text">
+                I specialize in BI area, particularly Power BI and Python, but
+                I'm always exploring new technologies and approaches. My
+                philosophy centers around writing clean, maintainable code and
+                creating intuitive user experiences.
+              </p>
+              <p class="about-text">
+                When I'm not coding, you'll find me playing some game, reading
+                sci-fi novels, or experimenting with new cooking recipes. I
+                believe that diverse interests fuel creativity and
+                problem-solving in tech.
+              </p>
+            </div>
+            <div class="lang-pt lang-hidden">
+              <p class="about-text">
+                Olá! Sou o Matheus, um analista de bi e desenvolvedor e
+                apaixonado com mais de 2 anos de experiência construindo
+                dashboards, relatórios e aplicações web modernas. Após me formar
+                em Sistemas para internet no ano de 2024, trabalhei como
+                estagiario em um escritório renomado de advocacia onde pude
+                aprender e ser efetivado para uma cargo de analista junior
+                entregando soluções robustas e escaláveis que resolvem problemas
+                do mundo real.
+              </p>
+              <p class="about-text">
+                Me especializo na área de BI, particularmente Power BI e Python,
+                mas estou sempre explorando novas tecnologias e abordagens.
+                Minha filosofia se concentra em escrever código limpo e
+                sustentável, criando experiências de usuário intuitivas.
+              </p>
+              <p class="about-text">
+                Quando não estou programando, você me encontrará jogando algo,
+                lendo romances de ficção científica ou experimentando novas
+                receitas culinárias. Acredito que interesses diversos alimentam
+                a criatividade e a resolução de problemas na tecnologia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <h2 class="section-title lang-en">Technical Skills</h2>
+        <h2 class="section-title lang-pt lang-hidden">Habilidades Técnicas</h2>
+        <div class="skills-grid">
+          <!-- Skill 1 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-php" style="color: #1e3050"></i>
+            </div>
+            <span class="skill-name">PHP</span>
+          </div>
+          <!-- Skill 2 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-css3-alt" style="color: #1572b6"></i>
+            </div>
+            <span class="skill-name">CSS3</span>
+          </div>
+          <!-- Skill 3 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-js" style="color: #f7df1e"></i>
+            </div>
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <!-- Skill 4 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fa-solid fa-chart-simple" style="color: #f7df1e"></i>
+            </div>
+            <span class="skill-name">Power Bi</span>
+          </div>
+          <!-- Skill 5 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fa-solid fa-chart-pie" style="color: #f58220"></i>
+            </div>
+            <span class="skill-name">Tableau</span>
+          </div>
+          <!-- Skill 6 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-python" style="color: #3776ab"></i>
+            </div>
+            <span class="skill-name">Python</span>
+          </div>
+          <!-- Skill 7 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-git-alt" style="color: #f05032"></i>
+            </div>
+            <span class="skill-name">Git</span>
+          </div>
+          <!-- Skill 8 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-database" style="color: #2496ed"></i>
+            </div>
+            <span class="skill-name">SQL</span>
+          </div>
+          <!-- Skill 9 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-database" style="color: #47a248"></i>
+            </div>
+            <span class="skill-name">MongoDB</span>
+          </div>
+          <!-- Skill 10 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-server" style="color: #000000"></i>
+            </div>
+            <span class="skill-name">Express</span>
+          </div>
+          <!-- Skill 11 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-salesforce" style="color: #2496ed"></i>
+            </div>
+            <span class="skill-name">Salesforce</span>
+          </div>
+          <!-- Skill 12 -->
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-figma" style="color: #f24e1e"></i>
+            </div>
+            <span class="skill-name">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title lang-en">Featured Projects</h2>
+        <h2 class="section-title lang-pt lang-hidden">Projetos em Destaque</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <img
+              src="/api/placeholder/600/400"
+              alt="TaskFlow Project"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">TaskFlow</h3>
+              <p class="project-description lang-en">
+                A collaborative project management platform with real-time
+                updates and advanced task filtering.
+              </p>
+              <p class="project-description lang-pt lang-hidden">
+                Uma plataforma de gerenciamento de projetos colaborativa com
+                atualizações em tempo real e filtragem avançada de tarefas.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag tag-react">React</span>
+                <span class="project-tag tag-node">Node.js</span>
+                <span class="project-tag tag-mongo">MongoDB</span>
+                <span class="project-tag tag-socket">Socket.io</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link link-demo lang-en">Live Demo</a>
+                <a href="#" class="project-link link-demo lang-pt lang-hidden"
+                  >Demonstração</a
+                >
+                <a href="#" class="project-link link-github">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <img
+              src="/api/placeholder/600/400"
+              alt="CryptoTracker Project"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">CryptoTracker</h3>
+              <p class="project-description lang-en">
+                A cryptocurrency dashboard with real-time price updates,
+                portfolio tracking, and market analytics.
+              </p>
+              <p class="project-description lang-pt lang-hidden">
+                Um painel de criptomoedas com atualizações de preços em tempo
+                real, rastreamento de portfólio e análise de mercado.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag tag-react">React</span>
+                <span class="project-tag tag-redux">Redux</span>
+                <span class="project-tag tag-firebase">Firebase</span>
+                <span class="project-tag tag-d3">D3.js</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link link-demo lang-en">Live Demo</a>
+                <a href="#" class="project-link link-demo lang-pt lang-hidden"
+                  >Demonstração</a
+                >
+                <a href="#" class="project-link link-github">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <img
+              src="/api/placeholder/600/400"
+              alt="EcoCommerce Project"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">EcoCommerce</h3>
+              <p class="project-description lang-en">
+                A full-featured e-commerce platform for sustainable products
+                with integrated payment processing.
+              </p>
+              <p class="project-description lang-pt lang-hidden">
+                Uma plataforma de e-commerce completa para produtos sustentáveis
+                com processamento de pagamento integrado.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag tag-next">Next.js</span>
+                <span class="project-tag tag-node">Node.js</span>
+                <span class="project-tag tag-postgres">PostgreSQL</span>
+                <span class="project-tag tag-stripe">Stripe</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link link-demo lang-en">Live Demo</a>
+                <a href="#" class="project-link link-demo lang-pt lang-hidden"
+                  >Demonstração</a
+                >
+                <a href="#" class="project-link link-github">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <img
+              src="/api/placeholder/600/400"
+              alt="DevConnect Project"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">DevConnect</h3>
+              <p class="project-description lang-en">
+                A social network for developers to share projects, get help, and
+                connect with potential collaborators.
+              </p>
+              <p class="project-description lang-pt lang-hidden">
+                Uma rede social para desenvolvedores compartilharem projetos,
+                obterem ajuda e se conectarem com potenciais colaboradores.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag tag-vue">Vue.js</span>
+                <span class="project-tag tag-node">Node.js</span>
+                <span class="project-tag tag-graphql">GraphQL</span>
+                <span class="project-tag tag-mongo">MongoDB</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link link-demo lang-en">Live Demo</a>
+                <a href="#" class="project-link link-demo lang-pt lang-hidden"
+                  >Demonstração</a
+                >
+                <a href="#" class="project-link link-github">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title lang-en">Download Resume</h2>
+        <h2 class="section-title lang-pt lang-hidden">Baixar Currículo</h2>
+        <div class="contact-container">
+          <div class="resume-card">
+            <div class="resume-card-content">
+              <div class="resume-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="resume-info">
+                <h3 class="lang-en">My Resume</h3>
+                <h3 class="lang-pt lang-hidden">Meu Currículo</h3>
+                <p class="resume-text lang-en">
+                  Download my complete resume to learn more about my skills,
+                  experience, and qualifications. Feel free to contact me at
+                  matheuslisboadev@gmail.com for any opportunities or inquiries.
+                </p>
+                <p class="resume-text lang-pt lang-hidden">
+                  Baixe meu currículo completo para conhecer mais sobre minhas
+                  habilidades, experiência e qualificações. Sinta-se à vontade
+                  para entrar em contato pelo email matheuslisboadev@gmail.com
+                  para oportunidades ou dúvidas.
+                </p>
+              </div>
+              <div class="resume-formats">
+                <div class="resume-format-item">
+                  <i class="far fa-file-pdf format-icon"></i>
+                  <span class="format-label lang-en">PDF Version</span>
+                  <span class="format-label lang-pt lang-hidden"
+                    >Versão PDF</span
+                  >
+                  <a href="documents/resume.pdf" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                    <span class="lang-en">Download</span>
+                    <span class="lang-pt lang-hidden">Baixar</span>
+                  </a>
+                </div>
+                <div class="resume-format-item">
+                  <i class="far fa-file-word format-icon"></i>
+                  <span class="format-label lang-en">Word Version</span>
+                  <span class="format-label lang-pt lang-hidden"
+                    >Versão Word</span
+                  >
+                  <a href="#" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                    <span class="lang-en">Not available</span>
+                    <span class="lang-pt lang-hidden">Não disponivel</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-container">
+            <div class="contact-info">
+              <h3 class="contact-info-title lang-en">Contact Information</h3>
+              <h3 class="contact-info-title lang-pt lang-hidden">
+                Informações de Contato
+              </h3>
+              <ul class="info-list">
+                <li class="info-item">
+                  <i class="fas fa-envelope info-icon"></i>
+                  <span>matheuslisboadev@gmail.com</span>
+                </li>
+                <li class="info-item">
+                  <i class="fas fa-phone info-icon"></i>
+                  <span>+55 (11) 96341-1355</span>
+                </li>
+                <li class="info-item">
+                  <i class="fas fa-map-marker-alt info-icon"></i>
+                  <span class="lang-en">São Paulo - SP - Brazil</span>
+                  <span class="lang-pt lang-hidden"
+                    >São Paulo - SP - Brasil</span
+                  >
+                </li>
+              </ul>
+              <h4 class="social-title lang-en">Find me on</h4>
+              <h4 class="social-title lang-pt lang-hidden">Me encontre em</h4>
+              <div class="social-links">
+                <a
+                  href="https://github.com/matheuslisboadev"
+                  class="social-link"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/matheuslisboadev/"
+                  class="social-link"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <!-- <a href="#" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-instagram"></i> -->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="lang-en">&copy; 2025 Matheus Lisboa. All rights reserved.</p>
+        <p class="lang-pt lang-hidden">
+          &copy; 2025 Matheus Lisboa. Todos os direitos reservados.
+        </p>
+        <a href="#hero" class="back-to-top">
+          <i class="fas fa-arrow-up"></i>
+          <span class="lang-en">Back to Top</span>
+          <span class="lang-pt lang-hidden">Voltar ao Topo</span>
+        </a>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a nav link
+      const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+        });
+      });
+
+      // Language Switcher
+      const languageBtns = document.querySelectorAll(".language-btn");
+      const enElements = document.querySelectorAll(".lang-en");
+      const ptElements = document.querySelectorAll(".lang-pt");
+
+      languageBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+
+          // Update active button
+          languageBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          // Toggle language elements
+          if (lang === "en") {
+            enElements.forEach((el) => el.classList.remove("lang-hidden"));
+            ptElements.forEach((el) => el.classList.add("lang-hidden"));
+          } else if (lang === "pt") {
+            enElements.forEach((el) => el.classList.add("lang-hidden"));
+            ptElements.forEach((el) => el.classList.remove("lang-hidden"));
+          }
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            const navHeight = document.querySelector(".navbar").offsetHeight;
+            const targetPosition =
+              targetElement.getBoundingClientRect().top +
+              window.pageYOffset -
+              navHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission
+      const contactForm = document.getElementById("contact-form");
+
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          subject: document.getElementById("subject").value,
+          message: document.getElementById("message").value,
+        };
+
+        // Here you would typically send the data to a server
+        // For demo purposes, we'll just log it to console
+        console.log("Form submitted:", formData);
+
+        // Reset form
+        contactForm.reset();
+
+        // Show success message (in a real implementation)
+        alert(
+          document.querySelector(".lang-en:not(.lang-hidden)")
+            ? "Message sent successfully! I will get back to you soon."
+            : "Mensagem enviada com sucesso! Retornarei em breve."
+        );
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          navbar.style.height = "60px";
+        } else {
+          navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          navbar.style.height = "70px";
+        }
+      });
+    </script>
+  </body>
+</html>
